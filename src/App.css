@@ -109,4 +109,11 @@
 .statusBar {
   text-align: center;
   font-size: 12px;
+  color: deepskyblue;
+  background-color: #2f2f2f;
+  position: fixed;
+  z-index: 10;
+  width: 100%;
+  left: 0;
+  bottom: 0;
 }
