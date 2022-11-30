@@ -1,11 +1,15 @@
 import { ReactElement, useState } from "react";
 
 import { exit } from "@tauri-apps/api/process";
+
 import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
-import MenuBar from "./MenuBar";
+
 import { initialContent } from "../helpers/shortcuts";
 import { onLoadFile, onSaveFile, closeApplication } from "../helpers/filesys";
+
+import StatusBar from "./StatusBar";
+import MenuBar from "./MenuBar";
 
 export default function MainEditor(): ReactElement {
   const [isChanged, setIsChanged] = useState<boolean>(false);
@@ -47,18 +51,14 @@ export default function MainEditor(): ReactElement {
         if (e.ctrlKey && e.key === "q") {
           console.log({ isChanged });
 
-          const confirmed = await closeApplication();
+          const confirmed = await closeApplication(isChanged);
           if (!isChanged && confirmed) exit();
         }
       }}
     >
       {editor && <MenuBar editor={editor} />}
       <EditorContent editor={editor} />
-      {!!fileName && (
-        <div className="statusBar">
-          [ {isChanged ? fileName + "*" : fileName} ]
-        </div>
-      )}
+      {!!fileName && <StatusBar fileName={fileName} isChanged={isChanged} />}
     </div>
   );
 }

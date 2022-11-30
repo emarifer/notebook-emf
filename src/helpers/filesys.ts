@@ -81,9 +81,16 @@ export const onLoadFile = async (editor?: Editor | null): Promise<string> => {
   return filePath as string;
 };
 
-export const closeApplication = async (): Promise<boolean> => {
-  return await confirm("Verifica que no haya cambios antes de salir.", {
-    title: "Notebook EMF",
-    type: "warning",
-  });
+export const closeApplication = async (
+  isChanged: boolean
+): Promise<boolean> => {
+  return await confirm(
+    isChanged
+      ? "¡Guarda los cambios antes de salir!"
+      : "¿Estás seguro de querer salir de la aplicación?",
+    {
+      title: "Notebook EMF",
+      type: "warning",
+    }
+  );
 };

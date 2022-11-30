@@ -1,6 +1,19 @@
 @font-face {
-  font-family: "Cascadia Mono";
-  src: local(CascadiaMono), url(/fonts/CascadiaMono.woff2) format("woff2");
+  font-family: "JetBrainsMono";
+  font-weight: normal;
+  src: url(/fonts/JetBrainsMono-Regular.woff2) format("woff2");
+}
+
+@font-face {
+  font-family: "JetBrainsMono";
+  font-style: italic;
+  src: url(/fonts/JetBrainsMono-Italic.woff2) format("woff2");
+}
+
+@font-face {
+  font-family: "JetBrainsMono";
+  font-weight: 900;
+  src: url(/fonts/JetBrainsMono-ExtraBold.woff2) format("woff2");
 }
 
 *,
@@ -11,13 +24,12 @@
 
 body {
   margin: 0;
-  font-family: "Cascadia Mono";
+  font-family: "JetBrainsMono";
 }
 
 :root {
   font-size: 16px;
   line-height: 24px;
-  font-weight: 400;
 
   color: #0f0f0f;
   background-color: #f6f6f6;
